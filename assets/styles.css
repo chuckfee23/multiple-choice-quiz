@@ -136,17 +136,19 @@ button:hover {
   margin: 40px;
   border: 2px solid red;
   border-radius: 10px;
-}
+/* } */
 
 #leaderboard {
   display: flex;
   min-height: 400px;
   max-width: 700px;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   padding: 20px;
   margin: 40px;
   border: 2px solid red;
   border-radius: 10px;
-} */
+}
+
+#score-rank {
+  align-items: center;
+}

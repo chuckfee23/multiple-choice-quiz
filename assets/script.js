@@ -4,6 +4,7 @@
 var timerElement = document.querySelector("#timer-count");
 var startButton = document.querySelector(".start-button");
 var resultsScreen = document.getElementById("results-screen");
+var highScores = document.getElementById("leaderboard");
 // var incorrectChoice = document.querySelectorAll(".incorrect");
 // var correctChoice = document.querySelectorAll(".correct");
 // var answerChoice = document.querySelectorAll(".answerChoice");
@@ -124,11 +125,11 @@ function quiz() {
 // ensures only the quiz preview is presented to the user
 function init() {
   //   hideQuestions();
-
+  highScores.setAttribute("style", "display: none");
   resultsScreen.setAttribute("style", "display: none");
   //   hideLeaderBoard();
 }
-
+init();
 function hideQuestions() {
   questionElement.setAttribute("style", "display: none");
   //   document.getElementById("question1").style.display = "none";
@@ -159,9 +160,13 @@ function displayScore() {
   finalScore.innerHTML = currentScore.toString();
 
   submitButton.addEventListener("click", function () {
-    localStorage.setItem("initials", initialsElement.value);
-    localStorage.setItem("final-score", JSON.stringify(currentScore));
-    location.href = "./highscores.html";
+    var scoreboardEntry = {
+      initials: initialsElement.value,
+      score: currentScore,
+    };
+
+    localStorage.setItem("scoreboardEntry", JSON.stringify(scoreboardEntry));
+    renderHighScores(scoreboardEntry);
   });
 
   //   document.getElementById("results").style.display = "unset";
@@ -191,7 +196,6 @@ function startTimer() {
 // TODO: GET HELP ON QUIZ LOGIC
 
 // loads the page allowing user to begin taking the quiz upon clicking
-init();
 
 // when the user clicks the start button, execute the start quiz funtion
 startButton.addEventListener("click", startQuiz);
@@ -201,3 +205,19 @@ startButton.addEventListener("click", startQuiz);
 // if incorrect, change button to red, detract score, detract time, then when next is clicked, clear current question and display next question
 
 // TODO: create an object for every question
+function renderHighScores() {
+  resultsScreen.setAttribute("style", "display: none");
+  highScores.setAttribute("style", "display: unset");
+
+  var scoreboardSubmission = JSON.parse(
+    localStorage.getItem("scoreboardEntry")
+  );
+  console.log(scoreboardSubmission);
+  // Check if data is returned, if not exit out of the function
+  if (scoreboardSubmission !== null) {
+    document.getElementById("score-rank").innerHTML =
+      scoreboardSubmission.initials + " " + scoreboardSubmission.score;
+  } else {
+    return;
+  }
+}
