@@ -12,6 +12,7 @@ var currentIndex = 0;
 var currentScore;
 var timerCount;
 var timer;
+var finalScore = document.querySelector("#final-score");
 var quizComplete = false;
 var questionElement = document.getElementById("questions");
 var choiceElement = document.getElementById("choices");
@@ -81,23 +82,44 @@ function quiz() {
     choiceButton.setAttribute("value", choice);
 
     choiceButton.textContent = choice;
+    // console.log(currentScore);
 
     // display on the page
     choiceElement.appendChild(choiceButton);
 
-    choiceButton.onclick = checkAnswer();
+    choiceButton.addEventListener("click", function () {
+      if (
+        this.value == currentQuestion.correctAnswer &&
+        currentIndex != questions.length - 1
+      ) {
+        currentScore += 20;
+        // console.log(currentScore);
+        currentIndex++;
+        quiz();
+      } else if (
+        this.value != currentQuestion.correctAnswer &&
+        currentIndex != questions.length - 1
+      ) {
+        timerCount -= 10;
+        currentScore -= 5;
+        currentIndex++;
+        quiz();
+      } else {
+        displayScore(currentScore);
+      }
+    });
   }
 }
 
-function checkAnswer() {
-  if (this.value == questions[currentIndex].correctAnswer) {
-    currentScore += 20;
-    console.log(currentScore);
-    currentIndex++;
-  } else {
-    timerCount - 10;
-  }
-}
+// function checkAnswer() {
+//   if (this.value == questions[currentIndex].correctAnswer) {
+//     currentScore += 20;
+//     console.log(currentScore);
+//     currentIndex++;
+//   } else {
+//     timerCount - 10;
+//   }
+// }
 
 // ensures only the quiz preview is presented to the user
 function init() {
@@ -130,7 +152,18 @@ function hideQuestions() {
 
 function displayScore() {
   hideQuestions();
+  clearInterval(timer);
   resultsScreen.setAttribute("style", "display: unset");
+  console.log(currentScore);
+
+  finalScore.innerHTML = currentScore.toString();
+
+  submitButton.addEventListener("click", function () {
+    localStorage.setItem("initials", initialsElement.value);
+    localStorage.setItem("final-score", JSON.stringify(currentScore));
+    location.href = "./highscores.html";
+  });
+
   //   document.getElementById("results").style.display = "unset";
 }
 
