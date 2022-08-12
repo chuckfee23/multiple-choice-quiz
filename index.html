@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extremely Trivial Quiz</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <!-- <h1></h1> -->
+      <div id="timer">
+        <div id="timer-count">60</div>
+        <div id="timer-text">Seconds Remaining</div>
+      </div>
+    </header>
+
+    <div class="scores">
+      <a href="./highscores.html">View High Scores</a>
+    </div>
+    <div class="container">
+      <div id="start-screen">
+        <h2>Ready to test your trivial knowledge?</h2>
+        <p>
+          Thanks for showing interest in testing your trivial knowledge! You
+          will have 60 seconds to complete this quiz consisting of 5 multiple
+          choice questions. <br /><br />
+          For each correct answer, you will receive 20 points in your
+          favor...but choose your answers wisely! Why you ask? Because not only
+          will you LOSE 5 points for every incorrect answer, but you will also
+          lose 10 seconds of your remaining time, only ratcheting up the
+          pressure! <br /><br />
+          Do you think your trivial knowledge stacks up with the best? Click the
+          button below to find out!
+        </p>
+        <button class="start-button">TAKE THE QUIZ!</button>
+      </div>
+      <div id="questions">
+        <h2 id="question-title"></h2>
+        <div id="choices" class="choices"></div>
+      </div>
+      <div id="results-screen">
+        <h2>That's All!</h2>
+        <p>Your final score is: <span id="final-score"></span></p>
+        <p>
+          Enter you initials: <input type="text" id="initials" max="3" />
+          <button id="submit">Submit your score!</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- <section>
+      <div id="quiz-preview">
+        <h2>Ready to test your trivial knowledge?</h2>
+        <p>
+          Thanks for showing interest in testing your trivial knowledge! You
+          will have 60 seconds to complete this quiz consisting of 5 multiple
+          choice questions. <br /><br />
+          For each correct answer, you will receive 20 points in your
+          favor...but choose your answers wisely! Why you ask? Because not only
+          will you LOSE 5 points for every incorrect answer, but you will also
+          lose 10 seconds of your remaining time, only ratcheting up the
+          pressure! <br /><br />
+          Do you think your trivial knowledge stacks up with the best? Click the
+          button below to find out!
+        </p>
+        <button class="start-button">TAKE THE QUIZ!</button>
+      </div>
+      <div class="question" id="question1">
+        <h2>Question 1</h2>
+        <p>
+          What is the only US state whose eastern and western borders are
+          created entirely by rivers?
+        </p>
+        <ul>
+          <li><button class="answerChoice incorrect">Nebraska</button></li>
+          <li><button class="answerChoice incorrect">Tennessee</button></li>
+          <li><button class="answerChoice correct">Iowa</button></li>
+          <li><button class="answerChoice incorrect">Louisiana</button></li>
+        </ul>
+      </div>
+      <div class="question" id="question2">
+        <h2>Question 2</h2>
+        <p>Which of the following animals was Walt Disney afraid of?</p>
+        <ul>
+          <li><button class="answerChoice incorrect">Ducks</button></li>
+          <li><button class="answerChoice correct">Mice</button></li>
+          <li><button class="answerChoice incorrect">Dogs</button></li>
+          <li><button class="answerChoice incorrect">Elephants</button></li>
+        </ul>
+      </div>
+      <div class="question" id="question3">
+        <h2>Question 3</h2>
+        <p>Where were fortune cookies invented?</p>
+        <ul>
+          <li><button class="answerChoice incorrect">Shanghai</button></li>
+          <li><button class="answerChoice incorrect">Beijing</button></li>
+          <li><button class="answerChoice correct">San Francisco</button></li>
+          <li><button class="answerChoice incorrect">New York</button></li>
+        </ul>
+      </div>
+      <div class="question" id="question4">
+        <h2>Question 4</h2>
+        <p>
+          On average, healthy Americans do which the following activity 22 times a day?
+        </p>
+        <ul>
+          <li><button class="answerChoice incorrect">Yawn</button></li>
+          <li>
+            <button class="answerChoice incorrect">Crack Knuckles</button>
+          </li>
+          <li><button class="answerChoice incorrect">Cough</button></li>
+          <li>
+            <button class="answerChoice correct">Open the Refrigerator</button>
+          </li>
+        </ul>
+      </div>
+      <div class="question" id="question5">
+        <h2>Question 5</h2>
+        <p>What was the first fruit that was eaten on the moon?</p>
+        <ul>
+          <li><button class="answerChoice correct">Peach</button></li>
+          <li><button class="answerChoice incorrect">Banana</button></li>
+          <li><button class="answerChoice incorrect">Pear</button></li>
+          <li><button class="answerChoice incorrect">Apple</button></li>
+        </ul>
+      </div>
+      <div id="results">
+        <h2>That's All!</h2>
+        <div id="score"></div>
+        <input type="text" id="submitName" value="Enter your username" />
+        <button id="submit-score">
+          Submit your score to see your ranking!
+        </button>
+      </div>
+      <div id="leaderboard">
+        <h2>Top Scores:</h2>
+        <div id="score-rank"></div>
+        <button class="reset-button">Take the quiz again!</button>
+      </div>
+      <div></div>
+    </section> -->
+
+    <!-- May end up wanting to add a logic.js -->
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
